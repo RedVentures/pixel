@@ -23,24 +23,29 @@ var pixel = require('pixel');
 pixel('image')
   .send({ key1: 'value1' })
   .send({ key2: 'value2' })
-  .end();
+  .end(function(){
+    // ...
+  });
 
 pixel('script')
   .send('key1', 'value1')
   .send('key2', 'value2')
-  .end();
+  .end(function(){
+    // ...
+  });
 
 pixel('iframe')
   .send('key1', 'value1')
   .send('key2', 'value2')
-  .end();
+  .end(function(){
+    // ...
+  });
 ```
 
 
 ### .send(key, value)
 
-Appends `key=value` as a querystring parameter of the pixel request.
-*Note that this will urlencode the values for you*.
+Appends `key=value` as a querystring parameter of the pixel request. *Note that this will urlencode the values for you*.
 
 
 ### .end([callback])
@@ -50,11 +55,12 @@ Sends the actual HTTP request for the pixel, invoking the optional `callback`.
 
 ### pixel.defaults(options)
 
-Sets the defaults for every pixel instantiated. The options and predefined
-defaults are:
+Sets the defaults for every pixel instantiated. The options and predefined defaults are:
 
-  - `host`: Remote hostname. Defaults to `window.location.hostname`.
+  - `host`: Remote hostname. Defaults to `location.hostname`.
   - `path`: Remote path. Defaults to `/pixel`.
+  - `protocol`: Remote protocol. Defaults to `location.protocol`
+  - `cacheBust`: Whether to append a random "cache bust" to the URL.
 
 ```javascript
 var pixel = require('pixel');
