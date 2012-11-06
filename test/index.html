@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>pixel test</title>
+</head>
+<body>
+  <h3>Pixel Test</h3>
+  <script src="../build/build.js"></script>
+  <script>
+    var pixel = require('pixel');
+
+    // set defaults
+
+    pixel.defaults({
+      host: 'http://localhost:3000'
+    });
+   
+   // send image pixel
+
+    pixel('image')
+      .set('path', '/image')
+      .send('key1', 'value1')
+      .end(function(){
+        console.log('image done!');
+      });
+
+    // send script pixel
+
+    pixel('script')
+      .set('path', '/script')
+      .send({ key2: 'value2' })
+      .end(function(){
+        console.log('script done!');
+      });
+  </script>
+</body>
+</html>

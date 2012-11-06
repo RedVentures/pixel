@@ -1,0 +1,22 @@
+{
+  "name": "pixel",
+  "repo": "redventures/pixel",
+  "description": "magical pixel dust",
+  "version": "0.0.1",
+  "keywords": ["component", "pixels"],
+  "dependencies": {
+    "component/querystring": "*",
+    "component/inherit": "*"
+  },
+  "development": {
+    "express": "*"
+  },
+  "scripts": [
+    "index.js",
+    "lib/index.js",
+    "lib/pixels/pixel.js",
+    "lib/pixels/image.js",
+    "lib/pixels/script.js"
+  ],
+  "license": "Apache Version 2.0"
+}
