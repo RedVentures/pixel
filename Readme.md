@@ -15,7 +15,6 @@ Instantitates a new pixel for the given `type`. The supported types are:
 
   - image
   - script
-  - iframe
 
 ```javascript
 var pixel = require('pixel');
@@ -23,22 +22,13 @@ var pixel = require('pixel');
 pixel('image')
   .send({ key1: 'value1' })
   .send({ key2: 'value2' })
-  .end(function(){
-    // ...
-  });
+  .end();
 
 pixel('script')
   .send('key1', 'value1')
   .send('key2', 'value2')
   .end(function(){
-    // ...
-  });
-
-pixel('iframe')
-  .send('key1', 'value1')
-  .send('key2', 'value2')
-  .end(function(){
-    // ...
+    // optional callback
   });
 ```
 
@@ -47,21 +37,28 @@ pixel('iframe')
 
 Appends `key=value` as a querystring parameter of the pixel request. *Note that this will urlencode the values for you*.
 
+```javascript
+pixel('image')
+  .send('key1', 'value 1')
+  .send({ key2: 'value 2' })
+  .send({ 
+    key3: 'value 3',
+    key4: 'value 4'
+  })
+  .end();
+```
 
 ### .set(key, value)
 
 Sets the configuration value for the request. If you want to change it for all requests, see `.defaults()`.
 
 ```javascript
-var pixel = require('pixel');
-
-pixel('image')
-  .set('host', 'my-host.com')
-  .set('path', '/track.gif')
-  .send({ foo: 'foo', bar: 'bar' })
+pixel('script')
+  .set('host', 'foo.com')
+  .set('path', '/bar.js')
+  .send('key', 'value')
   .end();
 ```
-
 
 ### .end([callback])
 
