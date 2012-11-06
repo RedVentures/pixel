@@ -48,6 +48,21 @@ pixel('iframe')
 Appends `key=value` as a querystring parameter of the pixel request. *Note that this will urlencode the values for you*.
 
 
+### .set(key, value)
+
+Sets the configuration value for the request. If you want to change it for all requests, see `.defaults()`.
+
+```javascript
+var pixel = require('pixel');
+
+pixel('image')
+  .set('host', 'my-host.com')
+  .set('path', '/track.gif')
+  .send({ foo: 'foo', bar: 'bar' })
+  .end();
+```
+
+
 ### .end([callback])
 
 Sends the actual HTTP request for the pixel, invoking the optional `callback`.
